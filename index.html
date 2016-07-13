@@ -28,11 +28,11 @@
           <h2>Komentarze</h2>
           <pre><code data-trim data-noescape>
 // Komentarz w jednej linii
- 
-/* to jest dłuższy, 
+
+/* to jest dłuższy,
    wieloliniowy komentarz
  */
- 
+
 /* Nie możesz jednak /* zagnieżdzać komentarzy */ SyntaxError */
           </code></pre>
         </section>
@@ -84,7 +84,7 @@ iterate();
           <h2>Zmienne</h2>
           <p>Identyfikator może zaczynać się od litery, $, _. Poza tym mogą w nim występować liczby.</p>
           <pre><code data-trim data-noescape>
-let alaMaKota; 
+let alaMaKota;
 let _sierotkaMaRysia;
 let $znakDolara;
 let pawężChwyćŹródłaBrońKąśliwie;
@@ -98,50 +98,23 @@ let wśrodku%inneZnaki; // SynaxError
           <h2>Zmienne</h2>
           <p>Wielkość liter ma znaczenie</p>
           <pre><code data-trim data-noescape>
-let alaMaKota = 1; 
+let alaMaKota = 1;
 console.log(AlaMaKota); // ReferenceError
           </code></pre>
         </section>
         </section>
         <section>
-        <section>
-          <h2>undefined i null</h2>
+          <h2>Porównanie</h2>
           <pre><code data-trim data-escape>
-let header,
-  template = '<p>treść</p>';
-if(header) {
-  template = '<h1>' + header + '</h1>' + template;
-}
-console.log(header); // undefined
-console.log(template); // <p>treść</p>
+            0 == "0" // => true
+            ![] == [] // => true
+            undefined == null // => true
           </code></pre>
           <pre><code data-trim data-escape>
-let header = null,
-  template = '<p>treść</p>';
-if(header) {
-  template = '<h1>' + header + '</h1>' + template;
-}
-console.log(header); // null
-console.log(template); // <p>treść</p>
+            0 === "0" // => false
+            ![] === [] // => false
+            undefined === null // => false
           </code></pre>
-        </section>
-        <section>
-          <h2>undefined i null</h2>
-          <pre><code data-trim data-escape>
-let x = 0,
-  width,
-  center = x + (width / 2);
-
-console.log(center); // NaN
-          </code></pre>
-          <pre><code data-trim data-escape>
-let x = 0,
-  width = null,
-  center = x + (width / 2);
-
-console.log(center); // 0
-          </code></pre>
-        </section>
         </section>
         <section>
         <section>
@@ -159,17 +132,244 @@ console.log(center); // 0
         </section>
         <section>
           <h2>Konwersje typów</h2>
-          <p>W JavaScript istnieje 6 typów prymitywnych</p>
-          <ul>
-          <li>Boolean (true/false)</li>
-          <li>null oznaczający wartość zerową</li>
-          <li>undefined jako wartość nieokreślona</li>
-          <li>Number przykładowo 1, 2.5</li>
-          <li>String "Hello World"</li>
-          <li>Symbol niezmienny i niepowtarzalny</li>
-          </ul>
-          <p>i Object</p>
+          <pre><code data-trim data-escape>
+x = "Odpowiedź to " + 42 // "Odpowiedź to 42"
+y = 42 + " jest odpowiedzią" // "42 jest odpowiedzią"
+          </code></pre>
+          <pre><code data-trim data-escape>
+"37" - 7 // 30 sic!
+"37" + 7 // "377"
+          </code></pre>
         </section>
+          <section>
+            <h2>undefined i null</h2>
+          <pre><code data-trim data-escape>
+let header,
+template = '<p>treść</p>';
+if(header) {
+  template = '<h1>' + header + '</h1>' + template;
+}
+console.log(header); // undefined
+console.log(template); // <p>treść</p>
+          </code></pre>
+          <pre><code data-trim data-escape>
+let header = null,
+template = '<p>treść</p>';
+if(header) {
+  template = '<h1>' + header + '</h1>' + template;
+}
+console.log(header); // null
+console.log(template); // <p>treść</p>
+          </code></pre>
+          </section>
+          <section>
+            <h2>undefined i null</h2>
+          <pre><code data-trim data-escape>
+let x = 0,
+width,
+center = x + (width / 2);
+
+console.log(center); // NaN
+          </code></pre>
+          <pre><code data-trim data-escape>
+let x = 0,
+width = null,
+center = x + (width / 2);
+
+console.log(center); // 0
+          </code></pre>
+          </section>
+        <section>
+        <h2>String.prototype.charAt</h2>
+        <pre><code data-trim data-escape>
+let anyString="Brave new world";
+
+console.log("Indeks 0   jest '" + anyString.charAt(0)   + "'"); // 'B'
+console.log("Indeks 1   jest '" + anyString.charAt(1)   + "'"); // 'r'
+console.log("Indeks 2   jest '" + anyString.charAt(2)   + "'"); // 'a'
+console.log("Indeks 3   jest '" + anyString.charAt(3)   + "'"); // 'v'
+console.log("Indeks 4   jest '" + anyString.charAt(4)   + "'"); // 'e'
+console.log("Indeks 999 jest '" + anyString.charAt(999) + "'"); // ''
+        </code></pre>
+        </section>
+        <section>
+        <h2>String.prototype.replace</h2>
+        <pre><code data-trim data-escape>
+let str = 'Twas the night before Xmas...';
+let newstr = str.replace(/xmas/i, 'Christmas');
+console.log(newstr);  // Twas the night before Christmas...
+        </code></pre>
+        </section>
+        <section>
+        <h2>String.prototype.substr</h2>
+        <pre><code data-trim data-escape>
+var str = 'abcdefghij';
+
+console.log('(1, 2): '   + str.substr(1, 2));   // '(1, 2): bc'
+console.log('(-3, 2): '  + str.substr(-3, 2));  // '(-3, 2): hi'
+console.log('(-3): '     + str.substr(-3));     // '(-3): hij'
+console.log('(1): '      + str.substr(1));      // '(1): bcdefghij'
+console.log('(-20, 2): ' + str.substr(-20, 2)); // '(-20, 2): ab'
+console.log('(20, 2): '  + str.substr(20, 2));  // '(20, 2): '
+        </code></pre>
+        </section>
+        <section>
+        <h2>String.prototype.substring</h2>
+        <pre><code data-trim data-escape>
+var anyString = 'Mozilla';
+
+// Displays 'Moz'
+console.log(anyString.substring(0, 3));
+console.log(anyString.substring(3, 0));
+
+// Displays 'lla'
+console.log(anyString.substring(4, 7));
+console.log(anyString.substring(7, 4));
+
+// Displays 'Mozill'
+console.log(anyString.substring(0, 6));
+
+// Displays 'Mozilla'
+console.log(anyString.substring(0, 7));
+console.log(anyString.substring(0, 10));
+        </code></pre>
+        </section>
+          <section>
+            <h2>Array.prototype.forEach</h2>
+          <pre><code data-trim data-escape>
+let fruits = ['Apple', 'Banana'];
+
+fruits.forEach(function (item, index, array) {
+  console.log(item, index);
+});
+// Apple 0
+// Banana 1
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.push</h2>
+          <pre><code data-trim data-escape>
+let newLength = fruits.push("Orange");
+// ['Apple', 'Banana', 'Orange']
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.pop</h2>
+          <pre><code data-trim data-escape>
+let last = fruits.pop(); // remove Orange (from the end)
+// ['Apple', 'Banana'];
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.shift</h2>
+          <pre><code data-trim data-escape>
+let first = fruits.shift(); // remove Apple from the front
+// ['Banana'];
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.unshift</h2>
+          <pre><code data-trim data-escape>
+let newLength = fruits.unshift('Strawberry') // add to the front
+// ['Strawberry', 'Banana'];
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.map</h2>
+          <pre><code data-trim data-escape>
+let numbers = [1, 4, 9];
+let doubles = numbers.map(function(num) {
+return num * 2;
+});
+// doubles is now [2, 8, 18]. numbers is still [1, 4, 9]
+          </code></pre>
+          </section>
+          <section>
+            <h2>Array.prototype.reduce</h2>
+          <pre><code data-trim data-escape>
+// Suma wszystkich lementów tablicy
+var total = [0, 1, 2, 3].reduce(function(a, b) {
+return a + b;
+}, 0);
+// total == 6
+          </code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>this</h2>
+            <p>This najczęściej jest określane przez sposób wywołania.</p>
+          <pre><code data-trim data-escape>
+// Globalny scope
+console.log(this.document === document); // true
+
+// In web browsers, the window object is also the global object:
+console.log(this === window); // true
+
+this.a = 37;
+console.log(window.a); // 37
+          </code></pre>
+          </section>
+          <section>
+            <h2>this</h2>
+            <p>Proste wywołanie</p>
+          <pre><code data-trim data-escape>
+function f1(){
+  return this;
+}
+
+f1() === window; // global object
+          </code></pre>
+          <pre><code data-trim data-escape>
+function f2(){
+  "use strict"; // see strict mode
+  return this;
+}
+
+f2() === undefined;
+          </code></pre>
+            <p style="font-size: 14px">Note: In the second example, this should be undefined, because f2 was called without providing any base (e.g. window.f2()). This feature wasn't implemented in some browsers when they first started to support strict mode. As a result, they incorrectly returned the window object.</p>
+          </section>
+          <section>
+            <h2>this</h2>
+            <p>Wywołanie wewnątrz obiektu</p>
+          <pre><code data-trim data-escape>
+let o = {
+  prop: 37,
+  f: function() {
+    return this.prop;
+  }
+};
+
+console.log(o.f()); // logs 37
+          </code></pre>
+          <pre><code data-trim data-escape>
+let o = {prop: 37};
+
+function independent() {
+  return this.prop;
+}
+
+o.f = independent;
+
+console.log(o.f()); // logs 37
+          </code></pre>
+          </section>
+          <section>
+            <h2>this</h2>
+            <p>Wywołanie wewnątrz klasy</p>
+          <pre><code data-trim data-escape>
+function C() {
+  this.a = 37;
+}
+C.prototype.f = function() {
+  return this.a;
+}
+
+let c = new C();
+console.log(c.f());
+          </code></pre>
+          </section>
         </section>
       </div>
     </div>
