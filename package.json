@@ -1,0 +1,26 @@
+{
+  "name": "basics-js",
+  "version": "1.0.0",
+  "description": "Basics of js language",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kociolekt/basics-js.git"
+  },
+  "keywords": [
+    "js",
+    "basics"
+  ],
+  "author": "kociolekt <kociolek.t@gmail.com> (https://github.com/kociolekt)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kociolekt/basics-js/issues"
+  },
+  "homepage": "https://github.com/kociolekt/basics-js#readme",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}

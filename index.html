@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Podstawy js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Komentarze</h2>
+          <pre><code data-trim data-noescape>
+// Komentarz w jednej linii
+ 
+/* to jest dłuższy, 
+   wieloliniowy komentarz
+ */
+ 
+/* Nie możesz jednak /* zagnieżdzać komentarzy */ SyntaxError */
+          </code></pre>
+        </section>
+        <section>
+        <section>
+          <h2>Deklaracje</h2>
+          <pre><code data-trim data-noescape>
+var a;
+let b;
+const c = 0;
+const d;  // SyntaxError
+          </code></pre>
+        </section>
+        <section>
+          <h2>Scoping</h2>
+          <p>Różnice pomiędzy var a let i const</p>
+          <pre><code data-trim data-noescape>
+a = 10; // Hoisting przenosi deklaracje var na początek scope'a
+var a;
+
+b = 10; // ReferenceError
+let b;
+          </code></pre>
+        </section>
+        <section>
+          <h2>Scoping</h2>
+          <p>Różnice pomiędzy var a let i const</p>
+          <pre><code data-trim data-noescape>
+function iterate(array = [1, 2, 3, 4, 5]) {
+  for(var i = 0, aLen = array.length; i < aLen; i++) {
+    console.log(array[i]);
+  }
+  console.log('count:', i);
+}
+iterate();
+
+function iterate(array = [1, 2, 3, 4, 5]) {
+  for(let i = 0, aLen = array.length; i < aLen; i++) {
+    console.log(array[i]);
+  }
+  console.log('count:', i); // Reference error
+}
+iterate();
+          </code></pre>
+        </section>
+        </section>
+        <section>
+        <section>
+          <h2>Zmienne</h2>
+          <p>Identyfikator może zaczynać się od litery, $, _. Poza tym mogą w nim występować liczby.</p>
+          <pre><code data-trim data-noescape>
+let alaMaKota; 
+let _sierotkaMaRysia;
+let $znakDolara;
+let pawężChwyćŹródłaBrońKąśliwie;
+let liczbowe2;
+let 2liczbowe; // SynaxError
+let %inneZnaki; // SynaxError
+let wśrodku%inneZnaki; // SynaxError
+          </code></pre>
+        </section>
+        <section>
+          <h2>Zmienne</h2>
+          <p>Wielkość liter ma znaczenie</p>
+          <pre><code data-trim data-noescape>
+let alaMaKota = 1; 
+console.log(AlaMaKota); // ReferenceError
+          </code></pre>
+        </section>
+        </section>
+        <section>
+        <section>
+          <h2>undefined i null</h2>
+          <pre><code data-trim data-escape>
+let header,
+  template = '<p>treść</p>';
+if(header) {
+  template = '<h1>' + header + '</h1>' + template;
+}
+console.log(header); // undefined
+console.log(template); // <p>treść</p>
+          </code></pre>
+          <pre><code data-trim data-escape>
+let header = null,
+  template = '<p>treść</p>';
+if(header) {
+  template = '<h1>' + header + '</h1>' + template;
+}
+console.log(header); // null
+console.log(template); // <p>treść</p>
+          </code></pre>
+        </section>
+        <section>
+          <h2>undefined i null</h2>
+          <pre><code data-trim data-escape>
+let x = 0,
+  width,
+  center = x + (width / 2);
+
+console.log(center); // NaN
+          </code></pre>
+          <pre><code data-trim data-escape>
+let x = 0,
+  width = null,
+  center = x + (width / 2);
+
+console.log(center); // 0
+          </code></pre>
+        </section>
+        </section>
+        <section>
+          <h2>Typy</h2>
+          <p>W JavaScript istnieje 6 typów prymitywnych</p>
+          <ul>
+          <li>Boolean (true/false)</li>
+          <li>null oznaczający wartość zerową</li>
+          <li>undefined jako wartość nieokreślona</li>
+          <li>Number przykładowo 1, 2.5</li>
+          <li>String "Hello World"</li>
+          <li>Symbol niezmienny i niepowtarzalny</li>
+          </ul>
+          <p>i Object</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
